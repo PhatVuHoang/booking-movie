@@ -1,5 +1,5 @@
 import React from 'react'
-import './../../assets/Header.css'
+import './../../assets/HeaderComponent.css'
 import ava from './../../assets/img/icons/noel/avatar.png'
 import logo from './../../assets/img/icons/slide/web-logo.png'
 import buttonmenu from './../../assets/img/icons/slide/menu-options.png'
@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom'
 import { RightOutlined } from '@ant-design/icons'
 
 
-export default function Header() {
+export default function HeaderComponent() {
 
     const toggleMenu = () => {
         var menu = document.querySelector('.menu');
