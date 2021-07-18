@@ -1,5 +1,5 @@
 import React from 'react'
-import './../../assets/HeaderComponent.css'
+import './HeaderComponent.css'
 import ava from './../../assets/img/icons/noel/avatar.png'
 import logo from './../../assets/img/icons/slide/web-logo.png'
 import buttonmenu from './../../assets/img/icons/slide/menu-options.png'

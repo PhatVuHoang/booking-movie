@@ -2,7 +2,7 @@
 // import './App.css';
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import HeaderComponent from "./components/header/HeaderComponent";
+import HeaderComponent from "./components/Header/HeaderComponent";
 import Home from "./page/Home/Home";
 
 function App() {
@@ -11,11 +11,8 @@ function App() {
     
     <BrowserRouter>
       <HeaderComponent />
-
       <Switch>
         <Route exact path="/home" component={Home} />
-
-
         <Route exact path="/" component={Home} />
       </Switch>
 

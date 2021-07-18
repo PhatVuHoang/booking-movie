@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import Slider from 'react-slick'
-import './../../assets/CarouselComponent.css'
+import './CarouselComponent.css'
 import ModalVideo from 'react-modal-video'
 import '../../../node_modules/react-modal-video/css/modal-video.css';
 import playVideo from '../../assets/img/icons/slide/play-video.png';
 
 export default function CarouselComponent(props) {
-
 
     const settings = {
         dots: true,

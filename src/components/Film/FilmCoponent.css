@@ -1,0 +1,6 @@
+.ant-tabs-tab.ant-tabs-tab-active{
+    border-bottom: 1px solid white;
+}
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+    color: #fa5238;
+}
