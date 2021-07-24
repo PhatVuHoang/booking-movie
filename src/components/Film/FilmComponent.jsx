@@ -3,10 +3,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Card, Row, Tabs } from "antd";
 import 'antd/dist/antd.css';
 import './FilmCoponent.css'
-import { getFilmsAction } from "../../redux/actions/QuanLiPhimAction";
+import { getFilmsAction, playModal } from "../../redux/actions/QuanLiPhimAction";
 import Phim from "./Phim";
 import Slider from 'react-slick'
 import FilmMobile from "./FilmMobile/FilmMobileDangChieu";
+import ModalVideo from 'react-modal-video'
+import FilmMobileDangChieu from "./FilmMobile/FilmMobileDangChieu";
+import FilmMobileSapChieu from "./FilmMobile/FilmMobileSapChieu";
+
 
 export default function FilmComponent() {
   const { TabPane } = Tabs;
@@ -14,7 +18,7 @@ export default function FilmComponent() {
     console.log(key);
   }
 
-  let { danhSachPhim } = useSelector(state => state.FilmReducer);
+  let { danhSachPhim, modalDefault } = useSelector(state => state.FilmReducer);
 
   const dispatch = useDispatch();
 
@@ -64,6 +68,17 @@ export default function FilmComponent() {
       },
     ]
   };
+
+  const getVideoId = () =>{
+    let arrVid = modalDefault.trailer.split("/");
+    let lastId = arrVid[arrVid.length -1];
+    if(lastId.indexOf("=")>0){
+      return lastId.split("=")[1];
+    } 
+    return lastId;
+  }
+
+
   return (
     <div className="film mt-5">
       <Tabs defaultActiveKey="1" onChange={callback} centered={true}>
@@ -73,7 +88,7 @@ export default function FilmComponent() {
               {renderPhimDangChieu()}
             </Slider>
           </div>
-          <FilmMobile />
+          <FilmMobileDangChieu />
         </TabPane>
         <TabPane tab="Sắp Chiếu" key="2">
           <div className="container film__item">
@@ -81,8 +96,10 @@ export default function FilmComponent() {
               {renderPhimSapChieu()}
             </Slider>
           </div>
+          <FilmMobileSapChieu />
         </TabPane>
       </Tabs>
+      <ModalVideo channel='youtube' isOpen={modalDefault.isOpen} videoId={getVideoId()} onClose={() => {dispatch(playModal('', '', false))}} />
     </div>
   );
 }

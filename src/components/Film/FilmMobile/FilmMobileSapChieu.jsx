@@ -5,7 +5,7 @@ import Phim from '../Phim';
 import './FilmMobileDangChieu.css';
 
 
-const FilmMobileDangChieu = (props) => {
+const FilmMobileSapChieu = (props) => {
     let { danhSachPhim } = useSelector(state => state.FilmReducer);
 
     const dispatch = useDispatch();
@@ -17,9 +17,9 @@ const FilmMobileDangChieu = (props) => {
 
     let [numberItems, setNumberItems] = useState(4);
 
-    const danhSachPhimSoSanh = danhSachPhim.filter(x => x.dangChieu);
+    const danhSachPhimSoSanh = danhSachPhim.filter(x => x.sapChieu);
 
-    const danhSachPhimDangChieu = danhSachPhim.filter(x => x.dangChieu).splice(0, numberItems);
+    const danhSachPhimDangChieu = danhSachPhim.filter(x => x.sapChieu).splice(0, numberItems);
 
     const renderPhimDangChieu = () => {
         return danhSachPhimDangChieu.map((phim, index) => {
@@ -41,4 +41,4 @@ const FilmMobileDangChieu = (props) => {
     )
 }
 
-export default FilmMobileDangChieu
+export default FilmMobileSapChieu

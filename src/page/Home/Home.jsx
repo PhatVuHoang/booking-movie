@@ -1,5 +1,6 @@
 import React from 'react'
 import CarouselComponent from '../../components/Carousel/CarouselComponent'
+import CumRapComponent from '../../components/CumRap/CumRapComponent'
 import FilmComponent from '../../components/Film/FilmComponent'
 
 export default function Home(props) {
@@ -8,6 +9,7 @@ export default function Home(props) {
         <div>
             <CarouselComponent/>
             <FilmComponent />
+            <CumRapComponent />
         </div>
     )
 }

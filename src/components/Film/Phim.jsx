@@ -5,13 +5,16 @@ import moment from 'moment';
 import playVideo from '../../assets/img/icons/slide/play-video.png';
 import { NavLink } from 'react-router-dom';
 import { Rate } from 'antd';
-
+import ModalVideo from 'react-modal-video';
+import { useDispatch } from 'react-redux';
+import { playModal } from '../../redux/actions/QuanLiPhimAction';
 
 
 
 
 export default function Phim(props) {
 
+    const dispatch = useDispatch();
 
     const { Meta } = Card;
 
@@ -31,7 +34,9 @@ export default function Phim(props) {
                     </div>
                 </span>
                 <div className="card__layout"></div>
-                <button><img src={playVideo} alt={playVideo} /></button>
+                <button onClick={()=>{
+                    dispatch(playModal(phim.maPhim, phim.trailer, true));
+                }}><img src={playVideo} alt={playVideo} /></button>
                 <Meta title={phim.tenPhim} description={`${moment(phim.ngayKhoiChieu).format("DD-MM-yyyy")}`} />
             </Card>
         </NavLink>

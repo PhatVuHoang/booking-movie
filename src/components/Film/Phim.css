@@ -86,7 +86,7 @@
 
 @media screen and (max-width: 540.99px){
     .card{
-        width: 500px!important;
+        width: 400px!important;
     }
 
     .card:hover .card__layout,.card:hover button>img{
@@ -96,4 +96,22 @@
     .ant-card .ant-card-body{
         display: none;
     }
+}
+
+@media screen and (max-width: 410.99px){
+    .card{
+        width: 300px!important;
+        /* height: 330px; */
+    }
+
+    
+}
+
+@media screen and (max-width: 279.99px){
+    .card{
+        width: 200px!important;
+        /* height: 330px; */
+    }
+
+    
 }
