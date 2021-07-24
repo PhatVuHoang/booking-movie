@@ -10,7 +10,7 @@ export default function CarouselComponent(props) {
     const settings = {
         dots: true,
         infinite: true,
-        autoplay: false,
+        autoplay: true,
         speed: 500,
         arrows: true,
         slidesToShow: 1,
@@ -26,19 +26,19 @@ export default function CarouselComponent(props) {
         <div className="carousel__movie">
             <Slider {...settings} className="header__slick">
                 <div className="slide__slick">
-                    <img src="https://s3img.vcdn.vn/123phim/2021/04/trang-ti-16194117174325.jpg" alt="" />
+                    <img src="https://s3img.vcdn.vn/123phim/2021/04/trang-ti-16194117174325.jpg" alt="..." />
                         <button className="btn-play" onClick={() => setOpenVideo1(true)}>
                             <img src={playVideo} alt="play-button"/>
                         </button>     
                 </div>
                 <div className="slide__slick">
-                    <img src="https://s3img.vcdn.vn/123phim/2021/04/lat-mat-48h-16177782153424.png" alt="" />
+                    <img src="https://s3img.vcdn.vn/123phim/2021/04/lat-mat-48h-16177782153424.png" alt="..." />
                     <button className="btn-play" onClick={() => setOpenVideo2(true)}>
                         <img src={playVideo} alt="play-button"/>
                     </button>
                 </div>
                 <div className="slide__slick">
-                    <img src="https://s3img.vcdn.vn/123phim/2021/04/ban-tay-diet-quy-evil-expeller-16177781815781.png" alt="" />
+                    <img src="https://s3img.vcdn.vn/123phim/2021/04/ban-tay-diet-quy-evil-expeller-16177781815781.png" alt="..." />
                     <button className="btn-play" onClick={() => setOpenVideo3(true)}>
                         <img src={playVideo} alt="play-button"/>
                     </button>

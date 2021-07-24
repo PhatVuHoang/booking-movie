@@ -1,8 +1,9 @@
 import {combineReducers, createStore, applyMiddleware} from 'redux';
 import reduxThunk from 'redux-thunk';
+import {FilmReducer} from './reducers/FilmReducer';
 
 const rootReducer = combineReducers({
-    //reducer khai báo tại đây
+    FilmReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(reduxThunk));
