@@ -31,19 +31,19 @@ export default function HeaderComponent() {
             <div className="d-flex justify-content-between px-lg-4 nav">
                 <div className="logo">
                     <NavLink to="/">
-                        <img height={50} src={logo} alt />
+                        <img height={50} src={logo} alt="logo" />
                     </NavLink>
                 </div>
                 <div className="service">
                     <ul>
                         <li>
-                            <a href="#">Lịch Chiếu</a>
+                            <a href="/">Lịch Chiếu</a>
                         </li>
                         <li>
-                            <a href="#">Cụm Rạp</a>
+                            <a href="/">Cụm Rạp</a>
                         </li>
                         <li>
-                            <a href="#">Ứng Dụng</a>
+                            <a href="/">Ứng Dụng</a>
                         </li>
                     </ul>
                 </div>

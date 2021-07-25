@@ -5,13 +5,12 @@ import { getCumRapAction, getCumRapHeThongAction } from '../../redux/actions/Qua
 import './CumRapComponent.css';
 import CumRapHeThongComponent from './CumRapHeThong/CumRapHeThongComponent';
 
-const TabPane = Tabs;
 
 export default function CumRapComponent(props) {
-
+    const {TabPane} = Tabs;
 
     let { cumRap } = useSelector(state => state.FilmReducer);
-    console.log('cumRap', cumRap);
+
 
     const dispatch = useDispatch();
 
@@ -19,14 +18,17 @@ export default function CumRapComponent(props) {
         dispatch(getCumRapAction());
     }, []);
 
+
+
     const renderTabs = () => {
         return cumRap.map((rap, index) => {
-            return <TabPane tab={<img width={50} src={rap.logo} alt={rap.logo} />} key={index}>
-                <p>abc</p>
+            return <TabPane tab={<img width={50} src={rap.logo} alt={rap.logo} /> } key={index} >
+                <CumRapHeThongComponent maHeThongRap={rap.maHeThongRap} />
             </TabPane>
         })
     }
 
+    
     return (
         <div className="container p-5" style={{ marginTop: 50 }}>
             <Tabs tabPosition="left">
