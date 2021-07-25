@@ -28,7 +28,7 @@ export const getCumRapAction = () => {
     return async dispatch => {
         try {
             const result = await axios({
-                url: 'http://movieapi.cyberlearn.vn/api/QuanLyRap/LayThongTinHeThongRap',
+                url: 'http://movieapi.cyberlearn.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP01',
                 method: 'GET',
             });
             dispatch({

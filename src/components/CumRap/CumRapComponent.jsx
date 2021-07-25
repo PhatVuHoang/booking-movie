@@ -22,15 +22,18 @@ export default function CumRapComponent(props) {
 
     const renderTabs = () => {
         return cumRap.map((rap, index) => {
-            return <TabPane tab={<img width={50} src={rap.logo} alt={rap.logo} /> } key={index} >
-                <CumRapHeThongComponent maHeThongRap={rap.maHeThongRap} />
+            return <TabPane tab={<div className="cumRap">
+                <div className="cumRap__layout"></div>
+                <img width={50} src={rap.logo} alt={rap.logo} />
+            </div> } key={index} >
+                <CumRapHeThongComponent logo={rap.logo} lstCumRap={rap.lstCumRap} />
             </TabPane>
         })
     }
 
     
     return (
-        <div className="container p-5" style={{ marginTop: 50 }}>
+        <div className="container p-5 cumRapComponent" style={{ marginBottom: 40}}>
             <Tabs tabPosition="left">
                 {renderTabs()}
             </Tabs>

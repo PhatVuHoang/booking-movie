@@ -4,11 +4,19 @@
 
 .card{
     border-radius: 10px;
+    overflow: hidden;
+    transition: 5s;
 }
 
-.ant-card-cover {
-    position: relative;
+.card .ant-card-meta-title{
+    font-weight: 700;
+    box-shadow: #00000029 0px 0px 10px 0px;    
 }
+
+.card .ant-card-meta-description{
+    font-size: 12px;
+}
+
 
 .card__layout{
     position: absolute;
@@ -54,7 +62,7 @@
     color: red;
 }
 
-.card button{
+.card .btnPlay{
     position: absolute;
     top: 135px;
     left: 50%;
@@ -64,18 +72,50 @@
     border: none;
     visibility: hidden;
 }
-.card button:focus{
+.card .btnPlay:focus{
     outline: none;
 }
 
-.card button img{
+.card .btnPlay img{
     width: 40px;
 }
 
-.card:hover .card__layout,.card:hover button>img{
+.card:hover .card__layout,.card:hover .btnPlay>img{
     visibility: visible;
 }
 
+.card .ant-card-meta-description{
+    transition: .5s;
+}
+
+.card:hover .ant-card-meta-description{
+    transition: .5s;
+    transform: translateX(75%);
+}
+.card .btnMuaVe{
+    position: absolute;
+    bottom: 18px;
+    left: -50%;
+    transform: translateX(-50%);
+    transition: .5s;
+    background-color: #fb4226;
+    color: white;
+    padding: 2px 20px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+
+.card .btnMuaVe:hover{
+    color: #fb4226;
+    background-color: #fff;
+    border: 1px solid #fb4226;
+}
+
+.card:hover .btnMuaVe{
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
 @media screen and (max-width: 769.99px) {
     .card{
@@ -89,7 +129,7 @@
         width: 400px!important;
     }
 
-    .card:hover .card__layout,.card:hover button>img{
+    .card:hover .card__layout,.card:hover .btnPlay>img{
         display: none;
     }
 

@@ -185,7 +185,7 @@
     margin-right: 25px;
 }
 
-@media screen and (max-width: 789.99px) {
+@media screen and (max-width: 768.99px) {
     .logo{
         margin-right: 0;
     }
