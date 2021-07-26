@@ -25,7 +25,7 @@ export default function Phim(props) {
             <Card className="card text-center"
                 hoverable
                 style={{ width: 220 }}
-                cover={<img width={190} height={270} alt={phim.tenPhim} src={phim.hinhAnh} onError={(e) => {
+                cover={<img width={190} height={270} alt={phim.tenPhim} src={phim?.hinhAnh} onError={(e) => {
                     e.target.onerror = null; e.target.src = "https://i.pinimg.com/originals/70/ce/41/70ce41310f8a9c2a84e97b57198015d9.gif"
                 }} />}
             >

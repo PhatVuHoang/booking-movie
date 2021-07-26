@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { Fragment, useState } from 'react'
 import './HeaderComponent.css'
 import ava from './../../assets/img/icons/noel/avatar.png'
 import logo from './../../assets/img/icons/slide/web-logo.png'
 import buttonmenu from './../../assets/img/icons/slide/menu-options.png'
 import { NavLink } from 'react-router-dom'
-import { RightOutlined } from '@ant-design/icons'
+import { RightOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux'
+import { openComponent } from '../../redux/actions/UserAction'
+import LoginComponent from './../LoginComponent/LoginComponent'
+import RegisterComponent from './../RegisterComponent/RegisterComponent'
+import { USER_LOGN } from '../../util/settings';
+import { Menu, Dropdown } from 'antd';
 
 
 export default function HeaderComponent() {
@@ -18,12 +24,37 @@ export default function HeaderComponent() {
         layout.classList.toggle('active');
     }
 
+    const dispatch = useDispatch();
+
+    const handleModal = (name, type) => {
+        dispatch(openComponent({
+            name: name,
+            type: type,
+            isModalVisible: true
+        }))
+    }
+
     // const stickClass = () =>{
-        // window.addEventListener('scroll', () =>{
-        //     var nav = document.querySelector('.nav');
-        //     nav.classList.toggle('sticky', window.scrollY >0);
-        // })
+    // window.addEventListener('scroll', () =>{
+    //     var nav = document.querySelector('.nav');
+    //     nav.classList.toggle('sticky', window.scrollY >0);
+    // })
     // }
+    const menuDropdown = (
+        <Menu>
+            <Menu.Item>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                    Trang cá nhân
+                </a>
+            </Menu.Item>
+            <Menu.Item>
+                <a target="_blank" className="text-danger" rel="noopener noreferrer" href="https://www.antgroup.com">
+                    Đăng xuất
+                </a>
+            </Menu.Item>
+        </Menu>
+    )
+
 
     return (
         <div className="header">
@@ -49,15 +80,30 @@ export default function HeaderComponent() {
                 </div>
                 <div className="user mr-5">
                     <ul>
-                        <li>
-                            <a className="login" href="#">
-                                <img className="user__login" height={30} src={ava} alt="avatar" />
-                                Đăng Nhập
-                            </a>
+                        {localStorage.getItem(USER_LOGN) ? <li>
+                            <Dropdown overlay={menuDropdown}>
+                                <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                                    <img className="user__login" height={30} src={ava} alt="avatar" />
+                                    Hello, Hoai
+                                </a>
+                            </Dropdown>
                         </li>
-                        <li>
-                            <a className="user__register" href="#">Đăng Kí</a>
-                        </li>
+                            :
+                            <Fragment>
+                                <li>
+                                    <a className="login" href="#" onClick={() => {
+                                        handleModal(LoginComponent, 'Đăng Nhập')
+                                    }}>
+                                        <img className="user__login" height={30} src={ava} alt="avatar" />
+                                        Đăng Nhập
+                                    </a>
+                                </li>
+                                <li>
+                                    <a className="user__register" href="#" onClick={() => {
+                                        handleModal(RegisterComponent, 'Đăng Kí')
+                                    }}>Đăng Kí</a>
+                                </li>
+                            </Fragment>}
                     </ul>
                 </div>
                 <button className="menu__button" onClick={toggleMenu}>
@@ -66,22 +112,39 @@ export default function HeaderComponent() {
             </div>
             <div className="menu">
                 <ul>
-                    <li className="menu__dangnhap">
-                        <div>
-                            <img className="menu__login" height={30} src={ava} alt="..." />
-                            <NavLink id="dangnhap" to="/">
-                                Đăng Nhập
-                            </NavLink>
-                        </div>
-                        <button onClick={toggleMenu}>
-                            <RightOutlined id="login__icon" />
-                        </button>
-                    </li>
-                    <li>
-                        <NavLink to="/">
-                            Đăng Kí
-                        </NavLink>
-                    </li>
+                    {localStorage.getItem(USER_LOGN) ?
+                        <li className="menu__dangnhap">
+                            <div>
+                                <img className="menu__login" height={30} src={ava} alt="..." />
+                                <NavLink id="dangnhap" to="/">
+                                    Hello, Hoai
+                                </NavLink>
+                            </div>
+                            <button onClick={toggleMenu}>
+                                <RightOutlined id="login__icon" />
+                            </button>
+                        </li>
+
+                        :
+                        <Fragment>
+                            <li className="menu__dangnhap">
+                                <div>
+                                    <img className="menu__login" height={30} src={ava} alt="..." />
+                                    <NavLink id="dangnhap" to="/">
+                                        Đăng Nhập
+                                    </NavLink>
+                                </div>
+                                <button onClick={toggleMenu}>
+                                    <RightOutlined id="login__icon" />
+                                </button>
+                            </li>
+                            <li>
+                                <NavLink to="/">
+                                    Đăng Kí
+                                </NavLink>
+                            </li>
+                        </Fragment>
+                    }
                     <li>
                         <NavLink to="/">
                             Lịch Chiếu
@@ -97,7 +160,12 @@ export default function HeaderComponent() {
                             Ứng Dụng
                         </NavLink>
                     </li>
-
+                    {localStorage.getItem(USER_LOGN) ? <li>
+                        <NavLink className="text-danger"
+                         to="/">
+                            Đăng xuất
+                        </NavLink>
+                    </li> : ''}
                 </ul>
             </div>
 
