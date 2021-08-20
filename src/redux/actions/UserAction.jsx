@@ -1,5 +1,5 @@
 import { UserManagerService } from "../../services/UserService";
-import { ACCESS_TOKEN, USER_LOGN } from "../../util/settings";
+import { ACCESS_TOKEN, HISTORY_BOOKING, USER_LOGN } from "../../util/settings";
 import { LOGIN_ERROR, LOGIN_FAIL, OPEN_MODAL_USER, USER_INFO } from "./types/UserType";
 import { history } from './../../App';
 import axios from "axios";
@@ -115,6 +115,24 @@ export const capNhatAction = (user, token) => {
             dispatch({
                 type: USER_INFO,
                 user: result.data.content
+            })
+        } catch (errors) {
+            console.log(errors);
+        }
+    }
+}
+
+
+export const lichSuDatVe = (taiKhoan) => {
+    return async dispatch => {
+        try {
+
+            const data = { taiKhoan }
+
+            const result = await UserManagerService.lichSuDatVe(data);
+            dispatch({
+                type: HISTORY_BOOKING,
+                historyBooking: result.data
             })
         } catch (errors) {
             console.log(errors);

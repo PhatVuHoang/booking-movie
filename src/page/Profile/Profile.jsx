@@ -5,6 +5,7 @@ import { Tabs } from 'antd';
 import ProfileComponent from '../../components/ProfileComponent/ProfileComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { thongTinNguoiDdung } from '../../redux/actions/UserAction';
+import HistoryBooking from '../../components/HistoryBooking/HistoryBooking';
 
 const { TabPane } = Tabs;
 
@@ -24,7 +25,7 @@ export default function Profile(props) {
                     <ProfileComponent/>
                 </TabPane>
                 <TabPane tab="Lịch sử đặt vé" key="2">
-                    Content of Tab Pane 2
+                    <HistoryBooking />
                 </TabPane>
             </Tabs>
         </div>

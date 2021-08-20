@@ -1,5 +1,5 @@
 import LoginComponent from "../../components/LoginComponent/LoginComponent";
-import { USER_LOGN } from "../../util/settings";
+import { HISTORY_BOOKING, USER_LOGN } from "../../util/settings";
 import { LOGIN_FAIL, OPEN_MODAL_USER, USER_INFO } from "../actions/types/UserType"
 
 let usLogin = '';
@@ -15,7 +15,8 @@ const initialState = {
     },
     userLogin: usLogin,
     loginFail: '',
-    user: {}
+    user: {},
+    thongTinDatVe: {}
 }
 
 export const UserReducer = (state = initialState, action) => {
@@ -36,6 +37,10 @@ export const UserReducer = (state = initialState, action) => {
         case USER_INFO : {
             localStorage.setItem(USER_LOGN, JSON.stringify(action.user));
             return {...state, user: action.user}
+        }
+
+        case HISTORY_BOOKING : {
+            return {...state, thongTinDatVe: action.historyBooking}
         }
 
     default:

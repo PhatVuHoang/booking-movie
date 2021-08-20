@@ -56,11 +56,11 @@ export default function ProfileComponent(props) {
     return (
         <form className="form-group w-100 px-5 profileComponent" onSubmit={formik.handleSubmit} >
             <div className="row">
-                <div className="col-6">
+                <div className="col-12 col-lg-6">
                     <p>Tài khoản</p>
                     <input type="text" style={pointerStyle} name="taiKhoan" value={formik.values.taiKhoan} className="form-control" />
                 </div>
-                <div className="col-6">
+                <div className="col-12 col-lg-6">
                     <p>Mật khẩu</p>
                     {/* <input type="password" name="matKhau" value={formik.initialValues.matKhau} className="form-control" /> */}
                     <Input.Password
@@ -75,12 +75,12 @@ export default function ProfileComponent(props) {
             </div>
 
             <div className="row">
-                <div className="col-6">
+                <div className="col-12 col-lg-6">
                     <p>Email</p>
                     <input type="text" style={edit ? pointerStyle : { cursor: 'auto' }} name="email" onChange={formik.handleChange} value={formik.values.email} className="form-control" />
                     <p className='text-danger'>{formik.errors.email}</p>
                 </div>
-                <div className="col-6">
+                <div className="col-12 col-lg-6">
                     <p>Họ và tên</p>
                     <input type="text" style={edit ? pointerStyle : { cursor: 'auto' }} name="hoTen" onChange={formik.handleChange} value={formik.values.hoTen} className="form-control" />
                     <p className='text-danger'>{formik.errors.hoTen}</p>
@@ -89,16 +89,16 @@ export default function ProfileComponent(props) {
             </div>
 
             <div className="row">
-                <div className="col-6">
+                <div className="col-12 col-lg-6">
                     <p>Số ĐT</p>
                     <input type="text" style={edit ? pointerStyle : { cursor: 'auto' }} name="soDt" onChange={formik.handleChange} value={formik.values.soDt} className="form-control" />
                     <p className='text-danger'>{formik.errors.soDt}</p>
                 </div>
-                <div className="col-3">
+                <div className="col-6 col-lg-3">
                     <p>Mã nhóm</p>
                     <input type="text" style={pointerStyle} name="maNhom" value={formik.values.maNhom} className="form-control" />
                 </div>
-                <div className="col-3">
+                <div className="col-6 col-lg-3">
                     <p>Mã loại người dùng</p>
                     <input type="text" style={pointerStyle} name="maLoaiNguoiDung" value={formik.values.maLoaiNguoiDung} className="form-control" />
                 </div>

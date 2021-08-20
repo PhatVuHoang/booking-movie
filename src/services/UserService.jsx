@@ -11,9 +11,9 @@ export class UserService extends baseService{
     capNhat = (user, token) => {
         return this.put('http://movieapi.cyberlearn.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung', user, token)
     }
-    // thongTin = (token) =>{
-    //     return this.post('http://movieapi.cyberlearn.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan', '', token)
-    // }
+    lichSuDatVe = (taiKhoan) => {
+        return this.post('https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan', taiKhoan)
+    }
 }
 
 export const UserManagerService = new UserService();
