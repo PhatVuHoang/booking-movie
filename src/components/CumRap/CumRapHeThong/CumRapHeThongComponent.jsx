@@ -37,7 +37,7 @@ export default function CumRapHeThongComponent(props) {
                                         {
                                             // console.log('lichChieu', phim.lstLichChieuTheoPhim.splice(0,5));
                                             phim.lstLichChieuTheoPhim.splice(0, 5).map((lichChieu, index) => {
-                                                return <NavLink to="/">
+                                                return <NavLink to={`/datve/${lichChieu.maLichChieu}`}>
                                                     <Tag key={index} color="blue">{moment(lichChieu.ngayChieuGioChieu).format("hh:mm A")}</Tag>
                                                 </NavLink>
                                             })

@@ -1,5 +1,8 @@
 import axios from 'axios';
-import { GET_CUM_RAP, GET_CUM_RAP_HE_THONG, GET_FILMS, PLAY_MODAL } from './types/QuanLiPhimType';
+import { GET_CUM_RAP, GET_CUM_RAP_HE_THONG, GET_FILMS, GET_THONG_TIN_DAT_VE, PLAY_MODAL } from './types/QuanLiPhimType';
+
+import { FilmManagerService } from './../../services/FilmService';
+import { LAY_THONG_TIN_LICH_CHIEU_PHIM, LAY_THONG_TIN_PHIM } from './types/UserType';
 
 export const getFilmsAction = () => {
 
@@ -53,6 +56,64 @@ export const getCumRapHeThongAction = (maHeThong) => {
             })
         } catch (errors) {
             console.log(errors.response.data);
+        }
+    }
+}
+
+export const layThongTinPhimAction = (idPhim) => {
+    return async dispatch => {
+        try {
+            const result = await FilmManagerService.layThongTinPhim(idPhim);
+
+            dispatch({
+                type: LAY_THONG_TIN_PHIM,
+                thongTinPhim: result.data.content
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+export const layThongTinLichChieuPhimAction = (idPhim) => {
+    return async dispatch => {
+        try {
+            const result = await FilmManagerService.layThongTinLichChieuPhim(idPhim);
+
+            dispatch({
+                type: LAY_THONG_TIN_LICH_CHIEU_PHIM,
+                thongTinLichChieuPhim: result.data.content
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+export const layThongTinDatVeAction = (maLichChieu) => {
+    return async dispatch => {
+        try {
+            const result = await FilmManagerService.layThongTinDatVe(maLichChieu);
+            // console.log({result});
+            dispatch({
+                type: GET_THONG_TIN_DAT_VE,
+                data: result.data.content
+            })
+            
+        } catch (errors) {
+            console.log(errors);
+        }
+    }
+}
+
+export const datVeAction = (data, token) => {
+    return async () => {
+        try {
+           await FilmManagerService.datVeService(data, token);
+            window.location.reload();
+        } catch (errors) {
+            console.log(errors);
         }
     }
 }

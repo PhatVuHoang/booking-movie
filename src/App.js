@@ -15,6 +15,8 @@ import UserTemplate from "./templates/UserTemplate/UserTemplate";
 import FilmComponent from "./components/Film/FilmComponent";
 import AppComponent from "./components/AppComponent/AppComponent";
 import CumRapComponent from "./components/CumRap/CumRapComponent";
+import Detail from "./page/Detail/Detail";
+import DatVe from "./page/DatVe/DatVe";
 
 export const history = createBrowserHistory();
 
@@ -30,10 +32,12 @@ function App() {
         <HomeTemplate exact path='/phim' component={FilmComponent} />
         <HomeTemplate exact path='/cumrap' component={CumRapComponent} />
         <HomeTemplate exact path='/app' component={AppComponent} />
+        <HomeTemplate exact path='/detail/:id-:name' component={Detail} />
+        <UserTemplate exact path='/datve/:id' component={DatVe} />
         <HomeTemplate exact path="/" component={Home} />
 
 
-        {/* <HomeTemplate path="*" component={Home} /> */}
+        <HomeTemplate path="*" component={Home} />
       </Switch>
     </Router>
   );

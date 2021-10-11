@@ -6,6 +6,7 @@ import { USER_LOGN } from '../../util/settings';
 export default function UserTemplate(props) {
 
     if (!localStorage.getItem(USER_LOGN)) {
+        alert('Bạn cần phải đăng nhập')
         return <Redirect to="/" />
     }
 

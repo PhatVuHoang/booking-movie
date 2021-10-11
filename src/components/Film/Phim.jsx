@@ -21,6 +21,11 @@ export default function Phim(props) {
 
     const { phim } = props;
 
+    const camelString = (tenPhim) =>{
+        let ten = tenPhim.toLowerCase();
+        return ten.replace(' ', '-');
+    }
+
     // const animateImg ={
     //     transfrom: 'rotateY(180deg)',
     //     transition:{    
@@ -30,7 +35,7 @@ export default function Phim(props) {
 
 
     return (
-        <NavLink to="/">
+        <NavLink to={`/detail/${phim.maPhim}-${camelString(phim.biDanh)}`} >
             <Card className="card text-center"
                 hoverable
                 style={{ width: 220 }}
@@ -48,7 +53,7 @@ export default function Phim(props) {
                 <button className="btnPlay" onClick={() => {
                     dispatch(playModal(phim.maPhim, phim.trailer, true));
                 }}><img src={playVideo} alt={playVideo} /></button>
-                <NavLink to="/" className="btnMuaVe">Mua vé</NavLink>
+                <NavLink to={`/detail/${phim.maPhim}-${camelString(phim.biDanh)}`} className="btnMuaVe">Mua vé</NavLink>
                 <Meta title={phim.tenPhim} description={`${moment(phim.ngayKhoiChieu).format("DD-MM-yyyy")}`} />
             </Card>
         </NavLink>
